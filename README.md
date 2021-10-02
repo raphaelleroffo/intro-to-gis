@@ -87,4 +87,12 @@ Working in groups of 2 or 3, students will be provided a dataset to explore and 
 
 
 **Session 6: course wrap-up**
-*As the final session, this class will aim to focus on the final coursework. Ahead of the session, students will be able to select topics to be revisited in class, or more advanced GIS techniques they’d like to hear about. Students are encouraged to have a clear methodology in mind for the final coursework, and to ask specific questions.*
+
+*This final session is designed as a Q&A session. Students should have designed a methodology for the final coursework and are encouraged to prepare specific questions. Students will be able to select topics to be revisited in class, or to hear about more advanced GIS techniques if they wish.*
+
+
+### Resources
+
+- Longley, P.A., Goodchild, M.F., Maguire, D.J. and Rhind, D.W., 2005. Geographic information systems and science. John Wiley & Sons.
+- QGIS training guide: https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/
+- Robin Wilson’s data sources listing: https://freegisdata.rtwilson.com/
