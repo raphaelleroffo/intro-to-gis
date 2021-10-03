@@ -44,14 +44,24 @@ If you own an old Mac you may need to download an older version of QGIS. If you 
 
 ![Windows_Download](https://raw.github.com/raphaelleroffo/intro-to-gis/main/img/Windows_download.png)
 
-Once the installer is downloaded and launched, you can follow the steps and use the default options offered in each step.
+Once the installer is downloaded and launched, you can follow the steps and use the default options offered in each step. You're then ready to start mapping!
+
+
+![Welcome](https://raw.github.com/raphaelleroffo/intro-to-gis/main/img/Welcome.png)
 
 . 
 
+### The QGIS GUI
+
+Let's explore the QGIS Graphical User Interface (GUI).
+
+![GUI](https://raw.github.com/raphaelleroffo/intro-to-gis/main/img/GUI.png)
+
+.
 ### Documentation
 The QGIS documentation is available at this address: https://qgis.org/en/docs/index.html
 
 Please note:
 1. This course is taught in English but some of you will have a version of QGIS installed that's in a different language. If you are trying to understand how a function translates into that language, at any time when navigating the documentation you can change the language of the page directly in the url (by replacing `/en/` by `/fr/` for French, or `/es/` for Spanish, `/zh-Hans/` for Mandarin Chinese etc.): For instance to go from English: https://docs.qgis.org/3.16/en/docs/user_manual/introduction/qgis_gui.html to French: https://docs.qgis.org/3.16/fr/docs/user_manual/introduction/qgis_gui.html
 
-2. Similarly, you might have a version installed that is not 3.16 ; you can also edit the version directly in the URL to match the release you're using. For instance from 3.16 https://docs.qgis.org/3.16/en/docs/user_manual/introduction/qgis_gui.html to 2.18 https://docs.qgis.org/2.18/en/docs/user_manual/introduction/qgis_gui.html 
+2. Similarly, you might have a version installed that is not 3.16 ; you can also edit the version directly in the URL to match the release you're using, by changing `/3.16/` . For instance from QGIS version 3.16 https://docs.qgis.org/3.16/en/docs/user_manual/introduction/qgis_gui.html to QGIS version 2.18 https://docs.qgis.org/2.18/en/docs/user_manual/introduction/qgis_gui.html 
