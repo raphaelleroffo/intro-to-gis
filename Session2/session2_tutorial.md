@@ -102,6 +102,7 @@ Next, and before you start doign anything else, save your project file. Navigate
 
 
 Now, here is a very important point: **A QGZ file alone does NOT contain any data! Rather, the QGZ file and every modification you make to it will save the way you process the data. When sharing a GIS project with another person, you need to make sure you also share the data with them. For instance if you've made a nice map with your cycling lanes and nice symbologies, you must share the QGZ and the cycling lane data together. Otherwise the person you send the QGZ to will open a blank document and will get an error message saying QGZ can't handle the layers.**
+
 ### 3. Loading data into your project
 
 Now that you have set up your project nicely, time to load data.
@@ -114,6 +115,7 @@ You will notice that four layers have now appeared in your **Layers** panel.
 
 <img src="../img/S2-12.png" width="700">
 
+**Layer visibility**
 
 By default, QGIS applies random colours to the layers.
 Try drag and dropping layers to change their order in the Layers menu. By dragging the `Zone30_Polygons` layer to the bottom, I have now also moved that polygon layer under the three others on my map canvas.
@@ -122,19 +124,69 @@ Try drag and dropping layers to change their order in the Layers menu. By draggi
 
 You can also play with unticking the layers to make them disappear from the canvas. By clicking on the eye icon you'll also be able to control the visibility of your layers. Note that to select multiple layers at once you can use Ctrl or Shift, just like in your regular file browser.
 
+
+**CRS**
+
+Note that because you dragged data onto your canvas that is from Spain and all 4 layers are in EPSG:25831 by default, the Coordinate Reference System of your map canvas has automatically set itself to EPSG:25831 too (you can click on it to see this menu appear):
+
+
+<img src="../img/S2-15.png" width="700">
+
+
+**Attribute Table**
+
 We will get back to symbology next week but for now, have a brief look at the attribute table of the polygon layer by right clicking on it and selecting the Attribute Table, or clicking the icon in your toolbar. You'll see a table appear, which contains the attribute data for your Zones 30 Areas.
 
 <img src="../img/S2-14.png" width="700">
 
 
-More on that next week!
-
-### 4. Exporting data / Saving in a different format
-
-Let's imagine you want to export data in GeoJSON to play with it in kepler.gl 
+More on that next week when we work with the attribute table and perform table joins, selections, refactoring, etc.
 
 
 
+### 4. Exporting data / Saving in a different format and different CRS
+
+Let's imagine you want to export data in GeoJSON to play with it in kepler.gl ([Kepler only lets you load CSV of GeoJSON, in WGS84](https://docs.kepler.gl/docs/user-guides/b-kepler-gl-workflow/a-add-data-to-the-map#geojson)).
+
+Leave your CRS as it is for now; the conversion will happen as we export a copy of your dataset. Now, right click on your polygon layer > Export > Save features as...
+
+<img src="../img/S2-17.png" width="700">
+
+Select GeoJSON as the format. The second field to fill is the File Name. **Careful! Here QGIS needs a full path actually, so you have to click on the three dots to open up your explorer!** Navigate to your `Session2` folder and name this layer `Zone30Areas`.
+
+<img src="../img/S2-18.png" width="700">
+
+
+Set the CRS to Default: EPSG:4326 WGS84 (you may need to click on little earth with a hat symbol if it's not available from your dropdown menu):
+
+<img src="../img/S2-19.png" width="700">
+
+
+Press OK. The new layer is automatically added onto your map canvas, and is now also saved in your directory. Please now remove the new layer from your layer list by selecting it (in blue) and then clicking the Forbidden sign logo:
+
+<img src="../img/S2-22.png" width="700">
+
+
+Finally, you may try and load it into [kepler.gl](https://kepler.gl/demo)
+
+<img src="../img/S2-20.png" width="700">
+
+<img src="../img/S2-21.png" width="700">
+
+
+.
+### 5. Saving all your data as `*.gpkg`
+
+Geopackages are now the gold standard for saving and sharing your data in a clean way.
+
+Let's package up the four layers present on your canvas as a single compact geopackage file.
+
+It starts like the previous export. First, right click on the polygon layer > Export > Save features as...
+
+Now in your menu, select the Geopackage format. For the name, click on the three dots to navigate to your Session2 folder. Give it a name that's descriptive of your entire project, not that specific layer, for example `Session2-Barcelona`.
+
+
+<img src="../img/S2-23.png" width="700">
 
 ### Reminder: QGIS Documentation
 The QGIS documentation is available at this address: https://qgis.org/en/docs/index.html
