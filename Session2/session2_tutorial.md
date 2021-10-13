@@ -30,7 +30,7 @@ Lecturer: Raphaëlle Roffo
 
 .
 
-### Downloading data from the Barcelona open data portal
+### 1. Downloading data from the Barcelona open data portal
 
 Today we'll look at the city of Barcelona and its green mobility infrastructure. Luckily, an open data portal is available for you to search for data. Go to https://opendata-ajuntament.barcelona.cat/data/en/dataset .
 
@@ -38,7 +38,7 @@ On the side panel, you can select the data formats you're interested in. Here, t
 
 <img src="../img/S2-01.png" width="700">
 
-Now you see a list of various datasets. We will be interested in datasets related to cycling paths. Before you start downloading anything, make sure you create in your Documents a dedicated folder where you'll save all your downloads. You can call it `Session2`.
+Now you see a list of various datasets. We will be interested in datasets related to cycling paths. Before you start downloading anything, make sure you create in your Documents a dedicated folder where you'll save all your downloads. You can call it `Session2`. Note that QGIS can get "cranky" if the folder sits on a Dropbox or some kind of cloud-based drive. Please choose a *local* location on your computer.
 
 
 These are the datasets we will be working with:
@@ -54,7 +54,7 @@ These are the datasets we will be working with:
 
   **/!\ Now, BE VERY CAREFUL! On most platforms, downloading a shapefile will lead to a download of a zip file that contain 4 files:  `*.shp`, `*.dbs`, `*.shx` and `*.prj`. However, on this data portal it's not the case and chosing to download the `*.shp` file will only download that single file. Note that this file would be unusable on its own! So make sure you download the `*.zip` file and keep everything in that file.**
   
-  *We'll actually download both the ZONES30-CARRERS Zip file, in which the Zone 30 streets are represented as lines, and the ZONES30-POLIGONS Zip file, where they're grouped in areas (polygons):*
+  *We'll actually download both the 2021_2T_ZONES30_CARRERS Zip file, in which the Zone 30 streets are represented as lines, and the 2021_2T_ZONES30_POLIGONS Zip file, where they're grouped in areas (polygons):*
   
   <img src="../img/S2-04.png" width="700">
   .
@@ -78,12 +78,26 @@ These are the datasets we will be working with:
   <img src="../img/S2-06.png" width="700">
 
 
-Now equipped with these 4 layers
+Once all of these files are downloaded, make sure you **unzip everything** before you move on to the next step. QGIS does not understand zip files and is not able to unzip them for you.
 
-### Setting up your QGIS project
+Now equipped with these 4 unzipped layers in your `Session2` folder, you are ready to open QGIS!
 
+### 2. Setting up your QGIS project
 
-### Loading data into your project
+Start a new blank project.
+In your browser panel, navigate to the location of your `Session2` folder. Because it's usually hidden in successive folders, I like to add the location as favourite.
+<img src="../img/S2-07.png" width="700">
+
+You can then rename the folder path to a simpler name such as "Intro Session 2". You can easily remove favourites from this right click menu.
+<img src="../img/S2-08.png" width="700">
+
+Next, and before you start doign anything else, save your project file. Navigate to your `Session2` folder and save the file using the default extension: `*.qgz`.
+
+<img src="../img/S2-09.png" width="700">
+
+<img src="../img/S2-10.png" width="700">
+
+### 3. Loading data into your project
 
 
 ### Exporting data / Saving in a different format
