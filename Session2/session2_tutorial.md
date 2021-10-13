@@ -97,14 +97,44 @@ Next, and before you start doign anything else, save your project file. Navigate
 
 <img src="../img/S2-10.png" width="700">
 
+
+
+Now, here is a very important point: **A QGZ file alone does NOT contain any data! Rather, the QGZ file and every modification you make to it will save the way you process the data. When sharing a GIS project with another person, you need to make sure you also share the data with them. For instance if you've made a nice map with your cycling lanes and nice symbologies, you must share the QGZ and the cycling lane data together. Otherwise the person you send the QGZ to will open a blank document and will get an error message saying QGZ can't handle the layers.**
 ### 3. Loading data into your project
 
+Now that you have set up your project nicely, time to load data.
 
-### Exporting data / Saving in a different format
+From your `Intro - Session 2` folder in your **Browser** Favourites, unfold the folders and drag and drop all the layers (with the little blue symbol) onto your map canvas area.
+
+<img src="../img/S2-11.png" width="700">
+
+You will notice that four layers have now appeared in your **Layers** panel.
+
+<img src="../img/S2-12.png" width="700">
+
+
+By default, QGIS applies random colours to the layers.
+Try drag and dropping layers to change their order in the Layers menu. By dragging the `Zone30_Polygons` layer to the bottom, I have now also moved that polygon layer under the three others on my map canvas.
+
+<img src="../img/S2-13.png" width="700">
+
+You can also play with unticking the layers to make them disappear from the canvas. By clicking on the eye icon you'll also be able to control the visibility of your layers. Note that to select multiple layers at once you can use Ctrl or Shift, just like in your regular file browser.
+
+We will get back to symbology next week but for now, have a brief look at the attribute table of the polygon layer by right clicking on it and selecting the Attribute Table, or clicking the icon in your toolbar. You'll see a table appear, which contains the attribute data for your Zones 30 Areas.
+
+<img src="../img/S2-14.png" width="700">
+
+
+More on that next week!
+
+### 4. Exporting data / Saving in a different format
 
 Let's imagine you want to export data in GeoJSON to play with it in kepler.gl 
 
-### Documentation
+
+
+
+### Reminder: QGIS Documentation
 The QGIS documentation is available at this address: https://qgis.org/en/docs/index.html
 
 Please note:
