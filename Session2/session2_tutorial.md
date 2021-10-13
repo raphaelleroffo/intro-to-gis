@@ -86,9 +86,11 @@ Now equipped with these 4 unzipped layers in your `Session2` folder, you are rea
 
 Start a new blank project.
 In your browser panel, navigate to the location of your `Session2` folder. Because it's usually hidden in successive folders, I like to add the location as favourite.
+
 <img src="../img/S2-07.png" width="700">
 
 You can then rename the folder path to a simpler name such as "Intro Session 2". You can easily remove favourites from this right click menu.
+
 <img src="../img/S2-08.png" width="700">
 
 Next, and before you start doign anything else, save your project file. Navigate to your `Session2` folder and save the file using the default extension: `*.qgz`.
