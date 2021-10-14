@@ -255,6 +255,9 @@ Now to test that everything was saved properly, press the white page to create a
 
 You have now reopened your project file, complete with all the layers and the same symbology taht was previously applied. **Congrats! This concludes today's tutorial!**
 
+If you have had difficulties, the final result, packaged in the `Session2-Barcelona-data.gpkg` geopackage, is available for your to download on the GitHub `Session2` folder.
+
+
 ### Reminder: QGIS Documentation
 The QGIS documentation is available at this address: https://qgis.org/en/docs/index.html
 
