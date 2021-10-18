@@ -4,15 +4,19 @@
 **Lecturer: Raphaëlle Roffo**
 
 
-### Session 5: Cartographic design**
+### Session 5: Working with vector data: geoprocessing**
 
 *Class Content:*
-- *Kepler.gl tutorial: quick off-the-shelf data visualisation*
-- *Styling a map: basemap choice, preferred symbologies, class breaks definition, scale*
-- *Exporting a map: setting up a layout and adding map elements (north arrow, scale bar, legend, title etc.) 
+
+- *Use cases; why may you need to buffer, clip, intersect?*
+- *Crossing multiple layers: common geoprocessing tools*
+- *Walk-through common mistakes and data errors*
+- *Coursework guidelines*
 
 *Tutorial:*
-- *Source and load basemaps*
-- *Apply symbology of choice to vector data*
-- *Export maps using layouts*
+- *Learn about the main geoprocessing tools, and where to find more advanced functionalities*
 
+
+
+
+https://docs.qgis.org/3.16/en/docs/training_manual/vector_analysis/basic_analysis.html
