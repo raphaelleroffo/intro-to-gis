@@ -8,7 +8,7 @@ Lecturer: Raphaëlle Roffo
 
 ## **I. Session 3 Overview** 
 
-*[See Slides]((https://github.com/raphaelleroffo/intro-to-gis/blob/main/Session3/Intro%20to%20GIS%20-%20session%203.pdf))*
+*[See Slides](https://github.com/raphaelleroffo/intro-to-gis/blob/main/Session3/Intro%20to%20GIS%20-%20session%203.pdf)*
 
 - *Understanding the attribute table*
 - *Querying data based on their attributes*
