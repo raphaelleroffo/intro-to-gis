@@ -59,21 +59,7 @@ Working in groups of 2 or 3, students will be provided a dataset to explore and 
 - *Joining layers*
 
 
-**Session 4: Working with vector data: geoprocessing**
-
-*Class Content:*
-
-- *Use cases; why may you need to buffer, clip, intersect?*
-- *Crossing multiple layers: common geoprocessing tools*
-- *Walk-through common mistakes and data errors*
-- *Coursework guidelines*
-
-*Tutorial:*
-- *Learn about the main geoprocessing tools, and where to find more advanced functionalities*
-
-
-
-**Session 5: Cartographic design**
+**Session 4: Cartographic design**
 
 *Class Content:*
 - *Kepler.gl tutorial: quick off-the-shelf data visualisation*
@@ -84,6 +70,19 @@ Working in groups of 2 or 3, students will be provided a dataset to explore and 
 - *Source and load basemaps*
 - *Apply symbology of choice to vector data*
 - *Export maps using layouts*
+
+
+**Session 5: Working with vector data: geoprocessing**
+
+*Class Content:*
+
+- *Use cases; why may you need to buffer, clip, intersect?*
+- *Crossing multiple layers: common geoprocessing tools*
+- *Walk-through common mistakes and data errors*
+- *Coursework guidelines*
+
+*Tutorial:*
+- *Learn about the main geoprocessing tools, and where to find more advanced functionalities*
 
 
 **Session 6: course wrap-up**
