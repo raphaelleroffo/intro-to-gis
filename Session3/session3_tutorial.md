@@ -120,13 +120,18 @@ As seen in the lecture, you can also use the `Identify` tool to click on feature
 
 In this section, we will import a csv file that contains two fields of interest for us: a `longitude` and a `latitude` or `x` and `y`. Please note that an `Eastings` and `Northings` set of fields would be equally useful.
 
-In QGIS, you can load spatial **and** non-spatial tables. Vector layers are spatial tables; each vector layer contains a geometry and an attribute table. But you can also load **delimited text files** in your QGIS projects (files such as `*.csv`, `*.txt`, `*.dat` or `*.wkt`). They may only contain text, or they may contain coordinates / geometries that you could want to utilize. In your geopackage you have a `schools` layer that contains coordinate fields. It is already loaded in our project as a simple table. As you can see, you can easily access the attribute table of this layer but there is no geometry attached. Let's turn it into a point layer (the final result will be that `LondonSchoolPoints` layer that is present in the geopackage).
+In QGIS, you can load spatial **and** non-spatial tables. Vector layers are spatial tables; each vector layer contains a geometry and an attribute table. But you can also load **delimited text files** in your QGIS projects (files such as `*.csv`, `*.txt`, `*.dat` or `*.wkt`). They may only contain text, or they may contain coordinates / geometries that you could want to utilize.
+
+**If geometry is present in the csv**
+In your geopackage you have a `schools` layer that contains coordinate fields. It is already loaded in our project as a simple table. As you can see, you can easily access the attribute table of this layer but there is no geometry attached. That's why in the `Layers` panel the icon is a table and you don't have the option to tick or untick that layer; it can't be added to teh map canvas anyway. 
+
+Let's turn it into a point layer (the final result will be that `LondonSchoolPoints` layer that is present in the geopackage; as you can see the icon for that layer indicates that it is a **point** vector layer).
 
 <img src="../img/S3-09.png" width="700">
 
 Go back to the GitHub repository and download the file `schools.csv` into your `Session3` folder. Back in QGIS, in your top menu, navigate to `Layer` > `Add layer` > `Add Delimited Text Layer...`.
 
-Use the three dots to navigate to the `schools.csv` file location, and fill the parameters as in the screenshot below. Notice that QGIS has automatically detected the presence of `Eastings` and `Northings` fields and used them to populate the geometry fields. Be careful, we are working in the British National Grid CRS (EPSG 27700)!
+Use the three dots to navigate to the `schools.csv` file location, and fill the parameters as in the screenshot below. Notice that QGIS has automatically detected the presence of `Eastings` and `Northings` fields and used them to populate the geometry fields. Be careful, this time we are working in the **British National Grid** - CRS (EPSG 27700)!
 
 <img src="../img/S3-10.png" width="700">
 
@@ -135,10 +140,20 @@ Click `Add` and close. You now have a point layer where each point is a school!
 
 <img src="../img/S3-11.png" width="700">
 
+If you open the attribute table of that point layer, you will find the same information and the same number of rows as in the initial table.
+
+
+**If your non-spatial table doesn't contain geometry**
+
+If your non-spatial table does **not** contain geometry, then there are 2 options:
+- One of the fields is a unique ID that you can join to an existing geometry layer: see next section.
+- There is no field that you can in any way link to an existing geometry. There is nothing you can do and you can't use this data in your QGIS project.
+
+
 ### 6. Run an attribute-based join
 
 
-Another "simple" table is available in your geopackage; the `BoroughProfiles` table. If you open the attribute table of this layer, you won't find any latitude/longitude or eastings/northings fields. However, you will notice the presence of a `Code` field. This code is the same as the `gss_code` present in the `LondonBoroughs` polygon layer.
+Another non-spatial table is available in your geopackage; the `BoroughProfiles` table. I initially downloaded it as a csv file and it only contains tabular data. If you open the attribute table of this layer, you won't find any latitude/longitude or eastings/northings fields. However, you will notice the presence of a `Code` field. It turns out that this code is the same as the `gss_code` present in the `LondonBoroughs` polygon layer. When working on census data, national statistics offices will produce boundary files (vector layers) of each census unit, and will make sure to include a column with a unique ID for each polygon. Then, each table they produce will also refer to those unique census blocks by referring to this same unique ID. In this case, data is aggregated at the borough level and you have a code to link back each borough with the demographic data that was collected about this borough.
 
 <img src="../img/S3-12.png" width="700">
 
