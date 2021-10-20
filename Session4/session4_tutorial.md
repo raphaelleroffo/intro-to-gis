@@ -17,6 +17,11 @@
 - *Export maps using layouts*
 
 
+
+### Loading OSM layer
+https://docs.qgis.org/3.16/en/docs/training_manual/qgis_plugins/plugin_examples.html#hard-fa-the-quickosm-query-engine 
+
+
 Loading basemaps (using Python)
 https://opengislab.com/blog/2018/4/15/add-basemaps-in-qgis-30 
 One way to add basemaps in QGIS is to use XYZ Tiles by connecting to a tile service. You can do that very quickly using the Python console!
