@@ -23,16 +23,13 @@ Lecturer: Raphaëlle Roffo
 - Access summary statistics about a field
 - Understand the attribute table
 - Explore how features and records are related
-- Create a new field in your attribute table 
-- Create a refactored copy of a field (change the data type)
+- Create a point layer from a `*.csv` file
+- Create a table join
 - Create a query to select features by attribute
 - Use queries to only display a subset of your layer's features
-- Create a point layer from a `*.csv` file
-- Run an attribute-based join
 
 
 .
-
 
 ### 1. Setting up
 
@@ -147,47 +144,81 @@ If you open the attribute table of that point layer, you will find the same info
 
 If your non-spatial table does **not** contain geometry, then there are 2 options:
 - One of the fields is a unique ID that you can join to an existing geometry layer: see next section.
-- There is no field that you can in any way link to an existing geometry. There is nothing you can do and you can't use this data in your QGIS project.
+- There is no field that you can in any way link to an existing geometry or location. There is nothing you can do and you can't use this data in your QGIS project.
 
 
-### 6. Run an attribute-based join
+### 6. Create a table join
 
 
-Another non-spatial table is available in your geopackage; the `BoroughProfiles` table. I initially downloaded it as a csv file and it only contains tabular data. If you open the attribute table of this layer, you won't find any latitude/longitude or eastings/northings fields. However, you will notice the presence of a `Code` field. It turns out that this code is the same as the `gss_code` present in the `LondonBoroughs` polygon layer. When working on census data, national statistics offices will produce boundary files (vector layers) of each census unit, and will make sure to include a column with a unique ID for each polygon. Then, each table they produce will also refer to those unique census blocks by referring to this same unique ID. In this case, data is aggregated at the borough level and you have a code to link back each borough with the demographic data that was collected about this borough.
+A second non-spatial table is available in your geopackage; the `BoroughProfiles` table. I initially downloaded it as a csv file and it only contains tabular data. If you open the attribute table of this layer, you won't find any latitude/longitude or eastings/northings fields. However, you will notice the presence of a `Code` field. It turns out that this code is the same as the `gss_code` present in the `LondonBoroughs` polygon layer. When working on census data, national statistics offices will produce boundary files (vector layers) of each census unit, and will make sure to include a column with a unique ID for each polygon. Then, each data table they produce (e.g. on unemployment rates) will also refer to those unique census blocks by referring to this same unique ID in one column. 
 
 <img src="../img/S3-12.png" width="700">
 
 
-### 7. Create a query to select features by attribute
+In this case, data is aggregated at the **borough** level and you have a code to link back each borough polygon with the demographic data that was collected about this borough.
 
 
+<img src="../img/S3-13.png" width="700">
+
+Close the attribute tables. Double-click your `LondonBoroughs` polygon layer in the `Layers` menu to open the `Layers properties`. Go to the `Joins` tab. The section is empty; click on the green **+** sign to add a new table join.
+
+The table you want to join is the `london-borough-profile` table and you want to join using the column `gss_code` from your polygon layer and the `Code` from your non-spatial table. Press OK, then press `Apply` or OK and close your Properties. 
+
+
+<img src="../img/S3-14.png" width="700">
+
+
+That's it! If you reopen the attribute table, you now have many more fields available about each borrow! Using the `Identify features` tool you can now get much more information about each individual borough.
+
+<img src="../img/S3-15.png" width="700">
+
+
+Actually, it is really difficult to read these extra information as they all start with a `london-borough-profile` prefix. You can fix that! Go back to the `Joins` tab in your London Boroughs layer properties. Double click the join you've just created.
+
+Now tick the `Custom field name prefix` and replace it by something shorter or even nothing at all. 
+
+<img src="../img/S3-16.png" width="700">
+
+
+Save and exit - problem solved!
+
+<img src="../img/S3-17.png" width="700">
+
+### 7. Create a query to select features based on their attributes
+
+Now that you have all this information about your boroughs, let's query the data. Let's figure out which boroughs have a rather high proportion of population of working age. Open your attribute table for the `LondonBoroughs` polygon layer. Click on the `Select by expression` symbol. The syntax we're going to use here can be found in many other places in QGIS. When in doubt, refer to the [documentation](https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/expression.html) - it's very thorough!
+
+<img src="../img/S3-18.png" width="700">
+
+In the left section is the area where you **write your expression**. At the bottom, it indicates whether you are typing a valid or invalid expression.
+
+In the middle section, you have different families of functions. Click `Fields and values` to have access to all the fields names from that attribute table. Double click the name of a field to add it to your query expression.
+
+To the right, you can "sample" or see all values from that field to know what kind of values are present in this column. I'm only interested in boroughs where more than 18% of the population is of working age.
+
+**IMPORTANT:** here, because the field is of type string (you can see a little `abc` symbol), it looks like QGIS is treating each numerical value like a string. We will see next week how to solve that issue. For now, just type '18' between simple quote marks. Field names use double quote marks and strings single quote marks.
+
+Press `Select features` and close. You have now selected all the boroughs that match this criteria!
 
 
 ### 8. Use queries to only display a subset of your layer's features
 
-You may use a very similar approach to only display a subset of your dataset's features, directly from the parameters menu of your layer. Double click your layer to open the `Layer properties`. Navigate to the `Source` tab. Below the `Provider Feature Filter`, you should find an empty section. This means no filter is currently applied. Under this white block, click  `Query builder` to create a new filter.
+You may use a very similar approach to only display a subset of your dataset's features, directly from the parameters menu of your layer. This time let's play with the school point layer. Double click your `LondonSchoolPoints` layer to open the `Layer properties`. Navigate to the `Source` tab. Below the `Provider Feature Filter`, you should find an empty section. This means no filter is currently applied. Under this white block, click  `Query builder` to create a new filter.
 
-https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/vector_properties.html#query-builder
-The Query Builder dialog is accessible through the eponym button at the bottom of the Source tab in the Layer Properties dialog, under the Provider feature filter group.
+<img src="../img/S3-19.png" width="700">
 
-The Query Builder provides an interface that allows you to define a subset of the features in the layer using a SQL-like WHERE clause and to display the result in the main window. As long as the query is active, only the features corresponding to its result are available in the project.
-
+You can for instance write a query (a `WHERE` clause if we're using the SQL vocabulary) to find out which mixed-gender primary schools are located in the wards of Wimbledon, Whitechapel or Upminster. Note that, similarly to the `Select by expression` box from the previous section, you can double-click on field names and the values that you get from sampling the values. You can use the `Test` button to figure out if your expression is correct and how many features it returns. 
 
 
-### 9. Create a new field in the attribute table
+<img src="../img/S3-20.png" width="700">
 
 
-Now imagine that you 
-**Fields Property** https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/vector_properties.html#fields-properties 
+Press OK and exit. You can now see that a filter is applied and your layer only contains 28 features. A little filter has also appeared and allows you to directlya ccess and edit your definition query. To remove the filter, erase the expression.
 
-Double click on a layer to open the `Layer properties`. Navigate to the `Fields` tab. This tab gives us information on the fields present in the attribute table. If a join exists, it is also displayed here in a different colour.
-
-From this menu, you are able to edit the structure of your attribute table. If you toggle the Editing mode, you get access to the `New field` and `Delete field` buttons
+<img src="../img/S3-21.png" width="700">
 
 
 
 
-### 10. Create a refactored copy of a field (change the data type)
 
-In some instances, you will need a field to be stored in a certain data format (string, float, integer). For example, if you are trying to join two tables based on a common field, this field will need to be of data type `string`. It may be a serial number for example, or a code made of digits. In this case, it may be stored as an `integer`. In this case, you will need to "translate" your data in the right data type before you can go any further.
-
+Well done, that's it for today! Try out the various selection tools and try to build other definition query filters to get more familiar with queries. Next week we'll look into symbology.
