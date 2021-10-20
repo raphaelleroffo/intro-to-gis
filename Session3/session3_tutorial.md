@@ -32,8 +32,66 @@ Lecturer: Raphaëlle Roffo
 
 .
 
-### Statistics summary panel
+### 1. The statistics summary panel
+
+You can also access information about the number of features in your layer's parameters Information panel
+
 https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#statistical-summary-panel
+
+
+### 2. The attribute table
+
+### 3. Explore how features and records are related
+
+### 4. Create a new field in the attribute table
+
+
+**Fields Property** https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/vector_properties.html#fields-properties 
+
+Double click on a layer to open the `Layer properties`. Navigate to the `Fields` tab. This tab gives us information on the fields present in the attribute table. If a join exists, it is also displayed here in a different colour.
+
+From this menu, you are able to edit the structure of your attribute table. If you toggle the Editing mode, you get access to the `New field` and `Delete field` buttons
+
+
+
+
+### 5. Create a refactored copy of a field (change the data type)
+
+In some instances, you will need a field to be stored in a certain data format (string, float, integer). For example, if you are trying to join two tables based on a common field, this field will need to be of data type `string`. It may be a serial number for example, or a code made of digits. In this case, it may be stored as an `integer`. In this case, you will need to "translate" your data in the right data type before you can go any further.
+
+
+### 6. Create a query to select features by attribute
+
+https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#interacting-with-features
+
+In this section, we delve deeper into the SQL dimension of QGIS and we learn to run queries on your tables. The first case is a situation where you are trying to select a subset of your data, and maybe to create a new layer.
+
+
+### 7. Use queries to only display a subset of your layer's features
+
+You may use a very similar approach to only display a subset of your dataset's features, directly from the parameters menu of your layer. Double click your layer to open the `Layer properties`. Navigate to the `Source` tab. Below the `Provider Feature Filter`, you should find an empty section. This means no filter is currently applied. Under this white block, click  `Query builder` to create a new filter.
+
+https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/vector_properties.html#query-builder
+The Query Builder dialog is accessible through the eponym button at the bottom of the Source tab in the Layer Properties dialog, under the Provider feature filter group.
+
+The Query Builder provides an interface that allows you to define a subset of the features in the layer using a SQL-like WHERE clause and to display the result in the main window. As long as the query is active, only the features corresponding to its result are available in the project.
+
+
+### 8. Create a point layer from a `*.csv` file
+
+In this section, we will import a csv file that containstwo fields of interest for us: a `latitude` and a `longitude`. Please note that an `Eastings` and `Northings` set of fields would be equally useful.
+
+
+https://docs.qgis.org/3.16/en/docs/user_manual/managing_data_source/opening_data.html#importing-a-delimited-text-file 
+
+In QGIS, you can load spatial **and** non-spatial tables. Vector layers are spatial tables; each vector layer contains a geometry and an attribute table. But you can also load **delimited text files** in your QGIS projects (files such as `*.csv`, `*.txt`, `*.dat` or `*.wkt`). They may only contain text, or they may contain coordinates / geometries that you could want to utilize. This is what the `Add Delimited Text Layer` import tool is designed for.
+
+
+
+### 9. Run an attribute-based join
+
+https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/vector_properties.html#joins-properties
+
 
 
 ### Building expressions
@@ -105,62 +163,3 @@ More info here https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/inde
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-### Displaying only a subset of your data
-https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/vector_properties.html#query-builder
-The Query Builder dialog is accessible through the eponym button at the bottom of the Source tab in the Layer Properties dialog, under the Provider feature filter group.
-
-The Query Builder provides an interface that allows you to define a subset of the features in the layer using a SQL-like WHERE clause and to display the result in the main window. As long as the query is active, only the features corresponding to its result are available in the project.
-
-
-
-
-### Fields Property 
-https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/vector_properties.html#fields-properties 
-
-sourceFields The Fields tab provides information on fields related to the layer and helps you organize them.
-
-The layer can be made editable using the toggleEditing Toggle editing mode. At this moment, you can modify its structure using the newAttribute New field and deleteAttribute Delete field buttons.
-
-You can also rename fields by double-clicking its name. This is only supported for data providers like PostgreSQL, Oracle, Memory layer and some OGR layer depending on the OGR data format and version.
-
-If set in the underlying data source or in the forms properties, the field’s alias is also displayed. An alias is a human readable field name you can use in the feature form or the attribute table. Aliases are saved in the project file.
-
-Depending on the data provider, you can associate a comment with a field, for example at its creation. This information is retrieved and shown in the Comment column and is later displayed when hovering over the field label in a feature form.
-
-Other than the fields contained in the dataset, virtual fields and Auxiliary Storage included, the Fields tab also lists fields from any joined layers. Depending on the origin of the field, a different background color is applied to it.
-
-For each listed field, the dialog also lists read-only characteristics such as its type, type name, length and precision. When serving the layer as WMS or WFS, you can also check here which fields could be retrieved.
-
-
-
-
-### Selecting features
-https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#interacting-with-features
-
-
-### Importing a Delimited Text File:
-https://docs.qgis.org/3.16/en/docs/user_manual/managing_data_source/opening_data.html#importing-a-delimited-text-file 
-
-In QGIS, you can load spatial **and** non-spatial tables. Vector layers are spatial tables; each vector layer contains a geometry and an attribute table. But you can also load **delimited text files** in your QGIS projects (files such as `*.csv`, `*.txt`, `*.dat` or `*.wkt`). They may only contain text, or they may contain coordinates / geometries that you could want to utilize. This is what the `Add Delimited Text Layer` import tool is designed for.
-
-
-
-### Loading OSM layer
-https://docs.qgis.org/3.16/en/docs/training_manual/qgis_plugins/plugin_examples.html#hard-fa-the-quickosm-query-engine 
-
-
-### Joining two layers based on attributes
-https://docs.qgis.org/3.16/en/docs/user_manual/working_with_vector/vector_properties.html#joins-properties
-
-### Joining two layers based on location
