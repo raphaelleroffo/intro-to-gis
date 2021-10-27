@@ -65,7 +65,7 @@ Note that QuickOSM is a very powerful way for you to get access to feature geome
 
 
 **Warning!** 
-When you create a new layer using a geoprocessing tool, QGIS will produce a temporary layer, aka "scratch layer". This layer only exists for you in _this_ open session of QGIS and is not saved anywhere on your computer. This means unless you do something about it, the layer will be gone next time you reopen this project. Make sure you avoid this rookie mistake by checking that none of your layers display the little hairy box sign. If they do (like in this case, the layers you just queries from OSM) double click and save each of these layers into your project geopackage (giev each layer a meaningful name) or as a new shapefile in your project folder.
+When you create a new layer using a geoprocessing tool, QGIS will produce a temporary layer, aka "scratch layer". This layer only exists for you in _this_ open session of QGIS and is not saved anywhere on your computer. This means unless you do something about it, the layer will be gone next time you reopen this project. Make sure you avoid this rookie mistake by checking that none of your layers display the little hairy box sign. If they do (like in this case, the layers you just queries from OSM) double click and save each of these layers into your project geopackage (giev each layer a meaningful name) or as a new shapefile in your project folder. The little hairy box icon will disappear after you save the layer somewhere on your computer.
 
 <img src="../img/S4-07.png" width="700">
 
