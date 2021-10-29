@@ -61,7 +61,7 @@ After a few seconds to a few minutes, you shold get a success message, a 100% bl
 
 <img src="../img/S4-06.png" width="700">
 
-Note that QuickOSM is a very powerful way for you to get access to feature geometries! However attributes can sometimes be a bit messy or lack consistency (same feature types might be given different names) and tedious to navigate.
+Note that QuickOSM is a very powerful way for you to get access to feature geometries! However attributes can sometimes be a bit messy or lack consistency (same feature types might be given different names), which may make them tedious to navigate.
 
 
 Let's have a look at those layers. For cycling lane you would expect to work with lines, however QuickOSM also loaded a point layer. If you double-click the attribute table, you will notice that those points are actually *nodes* and don't contain especially useful attributes. We can't really use this layer to do anything so we will just remove it from our project.
@@ -83,6 +83,7 @@ The polygon layer also doesn't make much sense and only contains a single record
 
 
 **Scratch layer Warning!** 
+
 When you create a new layer using a geoprocessing tool (or in this case the QuickOSM plugin), QGIS will produce a temporary layer, aka "scratch layer". This layer only exists for you in _this_ open session of QGIS and **is not saved anywhere on your computer**. This means unless you do something about it, the layer will be gone next time you reopen this project. Make sure you avoid this rookie mistake by checking that none of your layers display the little hairy box sign. If they do (like in this case, the layers you just queries from OSM) double click and save the layers you want to keep into your project geopackage (give each layer a meaningful name) or as a new shapefile in your project folder. The little hairy box icon will disappear after you save the layer somewhere on your computer.
 
 <img src="../img/S4-07.png" width="700">
@@ -119,24 +120,31 @@ Using the single symbol, try to change the opacity, size and colour of your poin
 
 <img src="../img/S4-14.png" width="700">
 
-Now click on the `Simple Marker` to access further customization options. A useful one is the size and colour of stroke, and the shape of your marker. 
+Now click on the `Simple Marker` to access further customization options. A few useful ones include the size and colour of stroke, and the shape of your marker. 
 
 <img src="../img/S4-15.png" width="700">
 
-Note that you can even use common logos or import your own SVG or raster symbols to use as markers - for instance here under `Symbol layer type` select `SVG marker` , scroll down and you have access to a large array of logos, including this school logo. You can try it out, then please reverseback to a simple marker symbology of size 2mm and grey colour.
+Note that you can even use common logos or import your own SVG or raster symbols to use as markers - for instance here under `Symbol layer type` select `SVG marker` , scroll down and you have access to a large array of logos, including this school logo. You can try it out, notice that it is not the right choice in this case and then please reverse back to a simple marker symbology of size 2mm and grey colour.
 
 <img src="../img/S4-16.png" width="700">
 
 
-Now that you know more about the symbology customization, let's move on to something more useful for understanding our data. We decide we actually only want to work on primary schools that are currently operational (not closed, not opening in the future). To do so, we want to edit the definition query of our layer so that we only display the open primary school features. Navigate to your `Source` tab, and click `Query builder`. FInd out what values are available for different fields. For instance select `STATUS` and click on Sample `All` values. You can double click a field, an operator and a value to directly add them into your expression. Use `Test` to see if your expression has any syntax error.
+Now that you know more about the symbology customization, let's move on to something more useful for understanding our data. We decide we actually only want to work on primary schools that are currently operational (not closed, not opening in the future). To do so, we want to edit the definition query of our layer so that we only display the open primary school features. Navigate to your `Source` tab, and click `Query builder`. Find out what values are available for different fields. For instance select `STATUS` and click on Sample `All` values. You can double click a field, an operator and a value to directly add them into your expression. Use `Test` to see if your expression has any syntax error.
 Write the query that keeps primary schools that are still open, click OK to close this window, click `Apply` in the `Source` tab and go back to your `Symbology` tab.
 
 <img src="../img/S4-17.png" width="700">
 
-We are now interested in displaying mixed gender and separated boys/girls schools in different colours, to see if there is any geographical pattern as to where certain types of schools can be found. To do so, we will use a `Categorized` symbology and pick `GENDER` as our value. Click `Classify` to load the Gender values into your legend. Note that you can update your base symbol and choose a specific colour ramp, or you can edit each symbol one by one by clicking on them directly.
+We are now interested in displaying the different types of schools in different colours, to see if there is any geographical pattern as to where certain types of schools can be found. To do so, we will use a `Categorized` symbology and pick `TYPE` as our value. 
 
 <img src="../img/S4-18.png" width="700">
 
+Click `Classify` to load the Types values into your legend. Note that you can update your base symbol (click on the `Symbol` dropdown arrow then `Configure symbol`) and choose a specific colour ramp from the many available. Because we are using categorical variables here, we prefer to avoid using a sequential palette which would imply some form of order among the values (there is no order here, they're just three different values). You can also edit each symbol one by one by clicking on them directly.
+
+<img src="../img/S4-19.png" width="700">
+
+You can explore the many options available to you in the colour ramp (including shuffling the colours currently assigned to your values, creating your own random colour palette or editing existing ones).
+
+<img src="../img/S4-20.png" width="700">
 
 
 To go further, read more about the symbology on the [Documentation](https://docs.qgis.org/3.16/en/docs/training_manual/basic_map/symbology.html)
