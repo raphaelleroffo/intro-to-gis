@@ -211,11 +211,11 @@ Edit the symbols for `Free schools` and `Community Schools` to paste the same gr
 
 Let's now explore the styling of lines. In this case, we have one polyline layer: the OSM cycling lanes layer.
 
-If you open the `Cycleway` attribute table, you will notice that a lot of field are empty and that it's difficult to identify a single field that would make it easy to base our symbology on.
+If you open the `Cycleway` attribute table, you will notice that a lot of fields are actually empty and that it's difficult to identify a single field that would make it easy to base our symbology on.
 
 <img src="../img/S4-24.png" width="700">
 
-The `cycleway` field seemed promising, but using the `Summary statistics` tool (PRess `Cmd` + `6`, or go into your menu `View` > `Panels` > `Statistics`) you can see that there are 28 different distinct values in this field.
+The `cycleway` field seemed promising, but using the `Summary statistics` tool (Press `Ctrl + 6` or `⌘ + 6`, or go into your menu `View` > `Panels` > `Statistics`) you can see that there are 28 different distinct values in this field.
 
 <img src="../img/S4-25.png" width="700">
 
@@ -227,7 +227,9 @@ We also can't use `Graduated` symbology _(In fact, QGIS may even crash if you tr
 
 <img src="../img/S4-27.png" width="700">
 
-In fact, we are now seeing that this layer is going to be very difficult to use.  Let's see if we can find a dataset that's better suited to working with the attribute table. Let's use the reference provider for these questions: we'll use [Transport for London's cycling data](https://cycling.data.tfl.gov.uk/). Download the `CycleRoutes.kml` file to your Session4 working folder (a copy of it is also available in the geopackage on the GitHub). 
+In fact, we are now seeing that this layer is going to be very difficult to use, and that the geometries also look very scattered around. It's time to change gears and look for another dataset.
+
+Let's see if we can find a dataset that's better suited to working with the attribute table. The reference provider for these questions in the Geeater London Metropolitan Area is _Transport for London_; we'll use [their cycling data](https://cycling.data.tfl.gov.uk/). On this page, download the `CycleRoutes.kml` file (_the page is very packed, just use `Ctrl + F` or `⌘ + F` to jump to the file_). Save it into your Session4 working folder (if you're having issues, a copy of it is also available in the geopackage on the GitHub as `Tfl_CycleRoutes`).
 
 
 <img src="../img/S4-28.png" width="700">
@@ -236,9 +238,65 @@ KML files are vector files, you can easily drag and drop the layer onto your map
 
 <img src="../img/S4-29.png" width="700">
 
-If you look into the layer's attribute table, you'll find that one field is actually quite interesting: 
+If you look into the layer's attribute table, you'll find that two fields are actually quite interesting: the `Status` and `Programme` tell us about the completion status of the cycle routes, and which initiative they fall under.
 
 <img src="../img/S4-30.png" width="700">
+
+Double-click your layer and navigate to the `Symbology` tab. We will use the `Status` as our value. You can delete the `all other values...`.
+
+<img src="../img/S4-42.png" width="700">
+
+Click on the Symbol (not the arrow, but the Symbol button itself) to access all the customization options. Increase the line size to 0.5 and decrease teh opacity to 80%:
+
+<img src="../img/S4-43.png" width="700">
+
+We'll now edit each symbol individually, starting with the `Open` lanes. We'll use a dark green and copy the colour.
+
+<img src="../img/S4-44.png" width="700">
+
+
+Next: cycle routes `In Progress`. Paste the green you just copied from the open lanes and make it slightly more transparent. Now, click on the line symbol to edit the type of line; we will use a dashed line to symbolize the progression.
+
+<img src="../img/S4-45.png" width="700">
+
+
+Finally, pick a medium dark blue for the `Planned` lanes. Press OK, then look at your map canvas; you can zoom onto specific areas to get a clearer view. This symbology for the cycling lanes works pretty well because the nuance is subtle at the London scale and just gives us a general sense of where the main cycling routes are, but once you zoom onto a specific area you get a better sense of what routes are yet to be completed.
+
+<img src="../img/S4-46.png" width="700">
+
+
+Now, we'd like to use labels! Double-click your layer to open the `Layer properties` window and go to the `Labels` tab. Use `Single Labels`.
+
+<img src="../img/S4-47.png" width="700">
+
+
+Now, select `Programme` as your value. 
+
+<img src="../img/S4-48.png" width="700">
+
+The font works pretty well, we'll just edit a couple settings. First, let's add a buffer around the text so that it "pops" better from the background.
+
+<img src="../img/S4-49.png" width="700">
+
+Next, in the placement settings change the placement mode to `Curved` so that the text actually follows along the lines nicely.
+
+<img src="../img/S4-50.png" width="700">
+
+We're done with the line layer! Zoom in and out across London and notice that the rendering of the lines depends on the current map scale (the more you zoom in, the more line labels you can read). 
+
+<img src="../img/S4-51.png" width="700">
+
+This type of rendering behaviouyr is called "Scale-dependent rendering. You can for instance decide to only display certain features once you're zoomed in beyond a certain level. This allows you to avoid clutter. You could for instance decide that your `CycleRoutes` layer should only be visible once you're zoomed in at Borough level. You can try it by double-clicking your layer, and in the `Rendering` tab checking the `Scale Dependent Visibility` checkbox. Use 1:60000 as the minimum scale.
+
+<img src="../img/S4-52.png" width="700">
+
+Now if you're zoomed out to see all of London (scale 1:3), the layer is not rendered on your map. 
+
+<img src="../img/S4-53.png" width="700">
+
+But if you zoom in, for instance to 1:56461, then your layer re-appears:
+
+<img src="../img/S4-54.png" width="700">
 
 **3.4 Polygons symbology**
 
@@ -251,9 +309,7 @@ https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#s
 
 **3.6 Scale-based rendering**
 
-https://docs.qgis.org/3.16/en/docs/training_manual/basic_map/symbology.html#moderate-fa-scale-based-visibility
 
-You can also play with scale dependent rendering; using this feature, you control the appearance of your layer at different scales (for instance, you might want some layers to stop being visible when you zoom out of the area to avoid clutter)
 
 
 
