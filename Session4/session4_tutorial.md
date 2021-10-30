@@ -22,20 +22,25 @@ Lecturer: Raphaëlle Roffo
 ### Goals:
 
 - Loading data from Open Street Map
-- Vector symbology
-- Building a Choropleth
+- Accessing vector symbology settings
+- Creating rule-based symbology
+- Adding and styling labels
+- Setting scale-dependent visibility
+- Saving spatial bookmarks
 - Exporting a map: setting up a layout and adding map elements (north arrow, scale bar, legend, title etc.) 
 
 .
 
 In this tutorial, we will be exploring the theme of cycling to school. In the context of the Covid pandemic, the question of safely getting kids to attend school has become a key element in many countries' economic recovery strategies. Taking into considerations the pressing challenges of reducing carbon emissions, walking and cycling to school represent sustainable and safe ways for children and their parents to get to school, as long as proper cycling infrastructure exists.
 
-We will be focusing on primary schools in Greater London, and will look at existing and planned major cycling routes, in the context of the GLA (Greater London Authority) plan for reducing carbon emissions, in particular with an expansion on the [Ultra Low Emission Zone](https://data.london.gov.uk/dataset/ultra_low_emissions_zone_expansion_new) since 25 October 2021. We will also use the accessibility to public transport cscore in the census dataset to add some context.
+We will be focusing on primary schools in Greater London, and will look at existing and planned major cycling routes, in the context of the GLA (Greater London Authority) plan for reducing carbon emissions, in particular with an expansion on the [Ultra Low Emission Zone](https://data.london.gov.uk/dataset/ultra_low_emissions_zone_expansion_new) since 25 October 2021. 
+
+In the tutorial 5, we will add another layer to this analysis and use the accessibility to public transport score in the census dataset to add some context.
 
 
 ### 1. Setting up
 
-Download the `Session4-exercise` geopackage from GitHub. It contains the same London data as last week. Drag and drop the `BoroughsCensus` layer and the `Schools` layer onto your canvas. Make sure the CRS is set to `EPSG:27700`.
+Download the `Session4-exercise` geopackage from GitHub. It contains the same London data as in Tutorial 3 and some additional layers. Drag and drop the `BoroughsCensus` layer and the `Schools` layer onto your canvas. Make sure the CRS is set to `EPSG:27700`.
 
 Pick a basemap of your choice from the `XYZ Tiles` section of your `Browser` panel. I'll be using `CartoDb Positron`.
 
@@ -121,7 +126,7 @@ These 5 options are common to points, lines and polygons alike (points and polyg
 - **Rule-based** = you can define more advanced nuances using filters and expressions. For instance you could create 3 rules: 1)if a cycling lane is longer than 2km **and** in a separated lane then apply a certain symbology to it, otherwise 2) if it is between 500m and 2km and on a one-way road applly another symbology, and 3) don't display the rest.
 
 
-**3.2 Point symbology**
+**3.2 Exploring single and categorized point symbology**
 
 Using the single symbol, try to change the opacity, size and colour of your points. Note you can also use presets in the section below.
 
@@ -168,6 +173,8 @@ Note that in the Values list, the last value listed is _"all other values"_. You
 <img src="../img/S4-21.png" width="700">
 
 
+**3.3 Creating a rule-based symbology for the schools**
+
 There are still quite a few values (you could use [official information](https://www.gov.uk/types-of-school) to understand the nuances between each type of school). Here we'd like to improve the legibility of our map by reducing the number of categories. To do so we'll do some "data generalization", meaning we will lump together categories that are quite close thanks to `Rule-based Symbology`.
 
 <img src="../img/S4-31.png" width="700">
@@ -207,7 +214,7 @@ Edit the symbols for `Free schools` and `Community Schools` to paste the same gr
 
 
 
-**3.3 Lines symbology**
+**3.4 Styling the cycling lanes**
 
 Let's now explore the styling of lines. In this case, we have one polyline layer: the OSM cycling lanes layer.
 
@@ -230,7 +237,6 @@ We also can't use `Graduated` symbology _(In fact, QGIS may even crash if you tr
 In fact, we are now seeing that this layer is going to be very difficult to use, and that the geometries also look very scattered around. It's time to change gears and look for another dataset.
 
 Let's see if we can find a dataset that's better suited to working with the attribute table. The reference provider for these questions in the Geeater London Metropolitan Area is _Transport for London_; we'll use [their cycling data](https://cycling.data.tfl.gov.uk/). On this page, download the `CycleRoutes.kml` file (_the page is very packed, just use `Ctrl + F` or `⌘ + F` to jump to the file_). Save it into your Session4 working folder (if you're having issues, a copy of it is also available in the geopackage on the GitHub as `Tfl_CycleRoutes`).
-
 
 <img src="../img/S4-28.png" width="700">
 
@@ -265,6 +271,8 @@ Finally, pick a medium dark blue for the `Planned` lanes. Press OK, then look at
 <img src="../img/S4-46.png" width="700">
 
 
+**3.5 Adding and customizing labels**
+
 Now, we'd like to use labels! Double-click your layer to open the `Layer properties` window and go to the `Labels` tab. Use `Single Labels`.
 
 <img src="../img/S4-47.png" width="700">
@@ -286,7 +294,10 @@ We're done with the line layer! Zoom in and out across London and notice that th
 
 <img src="../img/S4-51.png" width="700">
 
-This type of rendering behaviouyr is called "Scale-dependent rendering. You can for instance decide to only display certain features once you're zoomed in beyond a certain level. This allows you to avoid clutter. You could for instance decide that your `CycleRoutes` layer should only be visible once you're zoomed in at Borough level. You can try it by double-clicking your layer, and in the `Rendering` tab checking the `Scale Dependent Visibility` checkbox. Use 1:60000 as the minimum scale.
+
+**3.6 Scale Dependent Visibility**
+
+This type of rendering behaviour is called "Scale-dependent rendering. You can for instance decide to only display certain features once you're zoomed in beyond a certain level. This allows you to avoid clutter. You could for instance decide that your `CycleRoutes` layer should only be visible once you're zoomed in at Borough level. You can try it by double-clicking your layer, and in the `Rendering` tab checking the `Scale Dependent Visibility` checkbox. Use 1:60000 as the minimum scale.
 
 <img src="../img/S4-52.png" width="700">
 
@@ -298,32 +309,78 @@ But if you zoom in, for instance to 1:56461, then your layer re-appears:
 
 <img src="../img/S4-54.png" width="700">
 
-**3.4 Polygons symbology**
+This is all for your line layer, now let's move on to your polygon layer.
 
 
-**3.5 Spatial bookmarks**
+**3.7 Styling polygons**
+
+There are 3 polygon layers in your geopackage. Bring them onto your map canvas.
+
+**3.7.1. Masking with the London boundaries**
+
+First, let's create a mask to hide what's beyond London boundaries. Double click the `London_Contours` layer and go to your `Symbology` tab. Select `Inverted Polygons`, then select `Shapeburst Fills` as your Symbol Layer Type. 
+
+<img src="../img/S4-55.png" width="700">
 
 
-Spatial bookmarks
-https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#spatial-bookmarks 
+Use `Two color` so that QGIS creates a light feathering effect, the first colour being Transparent and the second a 60% opaque white. 
 
-**3.6 Scale-based rendering**
-
+<img src="../img/S4-56.png" width="700">
 
 
+Set distance to `5.00`, then press OK and admire your new mask!
+
+<img src="../img/S4-57.png" width="700">
 
 
-### 4. Building a Choropleth
+**3.7.2. Ultra Low Emissions Zones**
 
-**4.1**
+Next we'll look at the `Ultra_Low_Emission_Zones` layer. We use a simple symbology and pick a bright green colour. We choose to not draw the boundary of this layer.
 
-**4.2**
+<img src="../img/S4-58.png" width="700">
 
-**4.3**
+
+
+**3.7.3. Context: Borough boundaries**
+
+Finally, let's handle the `LondonBoroughs` layer. Because our point and line layers are already quite busy, we want to keep it quite minimal. We'll  keep it transparent and just use display the boundaries between boroughs. Double-click your layer, and in the `Symbology` tab select `Single Symbol`. Click `Simple fill` to access the below customisation options. Choose a transparent fill and a dark gray outline of 0.4mm width.
+
+<img src="../img/S4-59.png" width="700">
+
+You're almost there! Make sure your layers are in the right order.
+
+<img src="../img/S4-60.png" width="700">
+
+
+
+### 4. Spatial bookmarks
+
+A useful feature of QGIS is the Spatial bookmarks, which allow you to "bookmark" certain zoom areas. Right click your `London Schools` layer and select `Zoom to layer`. We'll bookmark this view first.
+
+Select the menu `View` > ` New Spatial Bookmark…`, (or press `Ctrl+B` `⌘ + B `) to open the Bookmark Editor dialog. Give it the name `Greater-London` and save it in the` Project bookmarks`. By saving it here instead of in the `User bookmarks`, you save it in the project file itself and it will be available to otehr users if you share this file. 
+
+<img src="../img/S4-61.png" width="700">
+
+The Spatial Bookmarks can be found in your browser window. If you click on it, your map canvas will automatically "jump" back into this specific map extent and scale.
+
+Now repeat the operation! Zoom onto a borough of your choice, to a scale at which your cycle routes are displayed, and save a new spatial bookmark in your Project bookmarks. 
+
+<img src="../img/S4-62.png" width="700">
+
+You can find more information on Spatial bookmarks in the [Documentation](https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#spatial-bookmarks)
+
+
 
 ### 5. Exporting a map: setting up a layout and adding map elements (north arrow, scale bar, legend, title etc.) 
 
-**5.1**
+
+**5.1 Introducing the Print Layout Composer**
+
+We've established that GIS files ( `*.gqz` or geopackages) are a "recipe" to represent datasets as layers, and to display them in a specific way. Such files are _not_ images; if you want to export an image of your map (as `*.png`, `*.jpeg`, `*.pdf` or even to a printer directly), you must use the QGIS `Print Layout Composer`, which you can access from your menu `Project` > `New Print Layout...`. Give it a name such as `Session4-layout` and press Enter.
+
+<img src="../img/S4-63.png" width="700">
+
+
 
 **5.2**
 

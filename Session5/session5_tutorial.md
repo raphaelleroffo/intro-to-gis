@@ -19,4 +19,15 @@
 
 
 
+
+
+### Building a Choropleth
+
+**4.1**
+
+**4.2**
+
+**4.3**
+
+
 https://docs.qgis.org/3.16/en/docs/training_manual/vector_analysis/basic_analysis.html
