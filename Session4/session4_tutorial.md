@@ -28,6 +28,11 @@ Lecturer: Raphaëlle Roffo
 
 .
 
+In this tutorial, we will be exploring the theme of cycling to school. In the context of the Covid pandemic, the question of safely getting kids to attend school has become a key element in many countries' economic recovery strategies. Taking into considerations the pressing challenges of reducing carbon emissions, walking and cycling to school represent sustainable and safe ways for children and their parents to get to school, as long as proper cycling infrastructure exists.
+
+We will be focusing on primary schools in Greater London, and will look at existing and planned major cycling routes, in the context of the GLA (Greater London Authority) plan for reducing carbon emissions, in particular with an expansion on the [Ultra Low Emission Zone](https://data.london.gov.uk/dataset/ultra_low_emissions_zone_expansion_new) since 25 October 2021. We will also use the accessibility to public transport cscore in the census dataset to add some context.
+
+
 ### 1. Setting up
 
 Download the `Session4-exercise` geopackage from GitHub. It contains the same London data as last week. Drag and drop the `BoroughsCensus` layer and the `Schools` layer onto your canvas. Make sure the CRS is set to `EPSG:27700`.
@@ -35,6 +40,8 @@ Download the `Session4-exercise` geopackage from GitHub. It contains the same Lo
 Pick a basemap of your choice from the `XYZ Tiles` section of your `Browser` panel. I'll be using `CartoDb Positron`.
 
 <img src="../img/S4-01.png" width="700">
+
+
 
 
 ### 2. Loading OSM layer
@@ -156,12 +163,47 @@ You can also edit each symbol individually, one by one, by clicking on them dire
 <img src="../img/S4-23.png" width="700">
 
 
-Note that in the Values list, the last value listed is _"all other values"_. You can decide which values you want to keep or remove, and we will just get rid of this one using the red minus button.
+Note that in the Values list, the last value listed is _"all other values"_. You can decide which values you want to keep or remove, and we will just get rid of this one using the red "minus" button.
 
 <img src="../img/S4-21.png" width="700">
 
-Play a bit with the various options available to you.
 
+There are still quite a few values (you could use [official information](https://www.gov.uk/types-of-school) to understand the nuances between each type of school). Here we'd like to improve the legibility of our map by reducing the number of categories. To do so we'll do some "data generalization", meaning we will lump together categories that are quite close thanks to `Rule-based Symbology`.
+
+<img src="../img/S4-31.png" width="700">
+
+
+The values that were loaded from your `Categorical symbology` are still here. You can either delete them all and start from scratch, or edit the existing ones. We'll start with Academies. Double-click the first value; the epsilon symbol is where you can go to define your expression. Here, we want to create a single categories for Academy converter and Academy Sponsor Led:
+
+<img src="../img/S4-32.png" width="700">
+
+Press OK, then make sure to give a new name to this category (here: `Academies`).
+
+<img src="../img/S4-33.png" width="700">
+
+We also want to touch up the symbology by making the outline gray rather than black. Below, in the symbology section, click the `Simple marker` then scroll down to find the outline colour. Click to select a gray (you can also make it a bit transparent by reducing the opacity). Once you've found the gray you like, click `Copy color`; we'll be re-using it.
+
+<img src="../img/S4-39.png" width="700">
+
+Also change the Size of the marker to **1.6** instead of 2.0, then press OK. You can delete the second row (`Academy Sponsor led`) since we don't need it anymore.
+
+
+Now let's repeat this process to lump together the two types of Voluntary schools and the Foundation schools. Click on `Foundation School` for example, then find the Epsilon sign and write an `OR` statement to combine these three categories. PRess OK, then don't forget to rename it to `Foundation/Voluntary Schools`:
+
+<img src="../img/S4-37.png" width="700">
+
+Now on the symbology: again, scroll down to edit the `Simple marker`. Change teh size to 1.6, then in the outline colour you can simply paste the colour you used previously!
+
+<img src="../img/S4-40.png" width="700">
+
+You can delete the two extra `Voluntary school` categories so that you are left with only 4 categories:
+
+<img src="../img/S4-38.png" width="700">
+
+Edit the symbols for `Free schools` and `Community Schools` to paste the same outline colour and change the size to 1.6. If the colours are too similar, you can also change them one by one to make sure they're easily distinguishable.
+
+
+<img src="../img/S4-41.png" width="700">
 
 **3.3 Lines symbology**
 
@@ -183,10 +225,18 @@ We also can't use `Graduated` symbology _(In fact, QGIS may even crash if you tr
 
 <img src="../img/S4-27.png" width="700">
 
-This is a good time to use `Rule-based symbols`.
+In fact, we are now seeing that this layer is going to be very difficult to use.  Let's see if we can find a dataset that's better suited to working with the attribute table. Let's use the reference provider for these questions: we'll use [Transport for London's cycling data](https://cycling.data.tfl.gov.uk/). Download the `CycleRoutes.kml` file to your Session4 working folder (a copy of it is also available in the geopackage on the GitHub). 
 
 
+<img src="../img/S4-28.png" width="700">
 
+KML files are vector files, you can easily drag and drop the layer onto your map canvas.
+
+<img src="../img/S4-29.png" width="700">
+
+If you look into the layer's attribute table, you'll find that one field is actually quite interesting: 
+
+<img src="../img/S4-30.png" width="700">
 
 **3.4 Polygons symbology**
 
