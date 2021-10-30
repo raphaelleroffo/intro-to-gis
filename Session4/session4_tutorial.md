@@ -27,7 +27,6 @@ Lecturer: Raphaëlle Roffo
 - Adding and styling labels
 - Setting scale-dependent visibility
 - Saving spatial bookmarks
-- Exporting a map: setting up a layout and adding map elements (north arrow, scale bar, legend, title etc.) 
 
 .
 
@@ -35,7 +34,7 @@ In this tutorial, we will be exploring the theme of cycling to school. In the co
 
 We will be focusing on primary schools in Greater London, and will look at existing and planned major cycling routes, in the context of the GLA (Greater London Authority) plan for reducing carbon emissions, in particular with an expansion on the [Ultra Low Emission Zone](https://data.london.gov.uk/dataset/ultra_low_emissions_zone_expansion_new) since 25 October 2021. 
 
-In the tutorial 5, we will add another layer to this analysis and use the accessibility to public transport score in the census dataset to add some context.
+In the tutorial 5, we will add another layer to this analysis and use the accessibility to public transport score in the census dataset to add some more context.
 
 
 ### 1. Setting up
@@ -371,20 +370,4 @@ You can find more information on Spatial bookmarks in the [Documentation](https:
 
 
 
-### 5. Exporting a map: setting up a layout and adding map elements (north arrow, scale bar, legend, title etc.) 
-
-
-**5.1 Introducing the Print Layout Composer**
-
-We've established that GIS files ( `*.gqz` or geopackages) are a "recipe" to represent datasets as layers, and to display them in a specific way. Such files are _not_ images; if you want to export an image of your map (as `*.png`, `*.jpeg`, `*.pdf` or even to a printer directly), you must use the QGIS `Print Layout Composer`, which you can access from your menu `Project` > `New Print Layout...`. Give it a name such as `Session4-layout` and press Enter.
-
-<img src="../img/S4-63.png" width="700">
-
-
-
-**5.2**
-
-**5.3**
-
-**5.4**
-
+**Well done! This is it for this tutorial - in tutorial 5 you will build a choropleth and ue the print layout composer to export your maps.**
