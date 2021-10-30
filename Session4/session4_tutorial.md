@@ -153,16 +153,38 @@ You can explore the many options available to you in the colour ramp including s
 
 You can also edit each symbol individually, one by one, by clicking on them directly. You then get access to the same customisation options as you had under `Single symbol` earlier.
 
-
 <img src="../img/S4-23.png" width="700">
 
 
+Note that in the Values list, the last value listed is _"all other values"_. You can decide which values you want to keep or remove, and we will just get rid of this one using the red minus button.
 
-To go further, read more about the symbology on the [Documentation](https://docs.qgis.org/3.16/en/docs/training_manual/basic_map/symbology.html)
+<img src="../img/S4-21.png" width="700">
 
+Play a bit with the various options available to you.
 
 
 **3.3 Lines symbology**
+
+Let's now explore the styling of lines. In this case, we have one polyline layer: the OSM cycling lanes layer.
+
+If you open the `Cycleway` attribute table, you will notice that a lot of field are empty and that it's difficult to identify a single field that would make it easy to base our symbology on.
+
+<img src="../img/S4-24.png" width="700">
+
+The `cycleway` field seemed promising, but using the `Summary statistics` tool (PRess `Cmd` + `6`, or go into your menu `View` > `Panels` > `Statistics`) you can see that there are 28 different distinct values in this field.
+
+<img src="../img/S4-25.png" width="700">
+
+Double-click your `Cycleway` layer to open your `Layer properties` and the `Symbology` tab. If we pick a `Categorized` symbology and choose `cycleway` as the Value, we end up with way too many different colours and our map becomes illegible. Would you, as a map reader, be able to understand the values of each line if the Cycleway legend contained 28 items?
+
+<img src="../img/S4-26.png" width="700">
+
+We also can't use `Graduated` symbology _(In fact, QGIS may even crash if you try to use `Graduated` symbology because it doesn't have values to work with)_ because our fields contain `string` values (text), as you can see by clicking in the `Fields` tab :
+
+<img src="../img/S4-27.png" width="700">
+
+This is a good time to use `Rule-based symbols`.
+
 
 
 
@@ -175,12 +197,12 @@ To go further, read more about the symbology on the [Documentation](https://docs
 Spatial bookmarks
 https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#spatial-bookmarks 
 
-**3.6 Scale dependent rendering**
+**3.6 Scale-based rendering**
 
-
+https://docs.qgis.org/3.16/en/docs/training_manual/basic_map/symbology.html#moderate-fa-scale-based-visibility
 
 You can also play with scale dependent rendering; using this feature, you control the appearance of your layer at different scales (for instance, you might want some layers to stop being visible when you zoom out of the area to avoid clutter)
-https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#scale-dependent-rendering
+
 
 
 ### 4. Building a Choropleth
