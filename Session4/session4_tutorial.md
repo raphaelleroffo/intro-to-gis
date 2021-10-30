@@ -138,16 +138,44 @@ We are now interested in displaying the different types of schools in different 
 
 <img src="../img/S4-18.png" width="700">
 
-Click `Classify` to load the Types values into your legend. Note that you can update your base symbol (click on the `Symbol` dropdown arrow then `Configure symbol`) and choose a specific colour ramp from the many available. Because we are using categorical variables here, we prefer to avoid using a sequential palette which would imply some form of order among the values (there is no order here, they're just three different values). You can also edit each symbol one by one by clicking on them directly.
+Click `Classify` to load the Types values into your legend. Note that you can update your base symbol (click on the `Symbol` dropdown arrow then `Configure symbol`):
 
 <img src="../img/S4-19.png" width="700">
 
-You can explore the many options available to you in the colour ramp (including shuffling the colours currently assigned to your values, creating your own random colour palette or editing existing ones).
+
+By default, QGIS has a assigned random colours to each point. You can also choose a specific colour ramp from the many available by clicking on the `Color Ramp` dropdown arrow. Because we are using categorical variables here, we prefer to avoid using a sequential palette which would imply some form of order among the values (there is no order here, they're just three different values). 
 
 <img src="../img/S4-20.png" width="700">
 
+You can explore the many options available to you in the colour ramp including shuffling the colours currently assigned to your values, creating your own random colour palette or editing existing ones.
+
+<img src="../img/S4-22.png" width="700">
+
+You can also edit each symbol individually, one by one, by clicking on them directly. You then get access to the same customisation options as you had under `Single symbol` earlier.
+
+
+<img src="../img/S4-23.png" width="700">
+
+
 
 To go further, read more about the symbology on the [Documentation](https://docs.qgis.org/3.16/en/docs/training_manual/basic_map/symbology.html)
+
+
+
+**3.3 Lines symbology**
+
+
+
+**3.4 Polygons symbology**
+
+
+**3.5 Spatial bookmarks**
+
+
+Spatial bookmarks
+https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#spatial-bookmarks 
+
+**3.6 Scale dependent rendering**
 
 
 
@@ -155,11 +183,21 @@ You can also play with scale dependent rendering; using this feature, you contro
 https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#scale-dependent-rendering
 
 
+### 4. Building a Choropleth
 
+**4.1**
 
-Spatial bookmarks
-https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#spatial-bookmarks 
+**4.2**
 
+**4.3**
 
-Note: the colour selector can be a useful
-https://docs.qgis.org/3.16/en/docs/user_manual/introduction/general_tools.html#color-selector 
+### 5. Exporting a map: setting up a layout and adding map elements (north arrow, scale bar, legend, title etc.) 
+
+**5.1**
+
+**5.2**
+
+**5.3**
+
+**5.4**
+
