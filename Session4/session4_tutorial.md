@@ -173,7 +173,7 @@ There are still quite a few values (you could use [official information](https:/
 <img src="../img/S4-31.png" width="700">
 
 
-The values that were loaded from your `Categorical symbology` are still here. You can either delete them all and start from scratch, or edit the existing ones. We'll start with Academies. Double-click the first value; the epsilon symbol is where you can go to define your expression. Here, we want to create a single categories for Academy converter and Academy Sponsor Led:
+The values that were loaded from your `Categorical symbology` are still here. You can either delete them all and start from scratch, or edit the existing ones. We'll start with Academies. Double-click the first value; the epsilon symbol is where you can go to define your expression. Here, we want to create a single category for Academy converter and Academy Sponsor Led:
 
 <img src="../img/S4-32.png" width="700">
 
@@ -185,25 +185,27 @@ We also want to touch up the symbology by making the outline gray rather than bl
 
 <img src="../img/S4-39.png" width="700">
 
-Also change the Size of the marker to **1.6** instead of 2.0, then press OK. You can delete the second row (`Academy Sponsor led`) since we don't need it anymore.
+Finally, change the Size of the marker to **1.6** instead of 2.0, then press OK. 
 
 
-Now let's repeat this process to lump together the two types of Voluntary schools and the Foundation schools. Click on `Foundation School` for example, then find the Epsilon sign and write an `OR` statement to combine these three categories. PRess OK, then don't forget to rename it to `Foundation/Voluntary Schools`:
+Now let's repeat this process to lump together the Foundation schools and the two types of Voluntary schools. Click on `Foundation School`, then find the Epsilon sign and write an `OR` statement to combine these three categories. Press OK, then don't forget to rename it to `Foundation/Voluntary Schools`:
 
 <img src="../img/S4-37.png" width="700">
 
-Now on the symbology: again, scroll down to edit the `Simple marker`. Change teh size to 1.6, then in the outline colour you can simply paste the colour you used previously!
+Now on the symbology: again, scroll down to edit the `Simple marker`. Change the size to 1.6, then in the outline colour you can simply paste the colour you used previously!
 
 <img src="../img/S4-40.png" width="700">
 
-You can delete the two extra `Voluntary school` categories so that you are left with only 4 categories:
+You can delete the extra categories (the two types of `Voluntary school` and the `Academy Sponsor led`) since we don't need it anymore. You should be left with only 4 categories:
 
 <img src="../img/S4-38.png" width="700">
 
-Edit the symbols for `Free schools` and `Community Schools` to paste the same outline colour and change the size to 1.6. If the colours are too similar, you can also change them one by one to make sure they're easily distinguishable.
+Edit the symbols for `Free schools` and `Community Schools` to paste the same gray onto their outline colour, and to change the marker size to 1.6. If the 4 colours are too similar, you can also change them manually to make sure they can be easily distinguished. You can now press OK, we are done with the point layer!
 
 
 <img src="../img/S4-41.png" width="700">
+
+
 
 **3.3 Lines symbology**
 
