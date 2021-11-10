@@ -1,45 +1,87 @@
-# Introduction to GIS - Session 5
-**Sciences Po Urban School, GETEC Masters, Fall semester 2021-2022**
+# Session 5: Choropleths & Vector geoprocessing
 
-**Lecturer: Raphaëlle Roffo**
+**Introduction to GIS  ·  Sciences Po Urban School, GETEC Masters  ·  Fall semester 2021-2022**
 
+Lecturer: Raphaëlle Roffo
 
-### Session 5: Working with vector data: geoprocessing**
+&nbsp; 
 
-*Class Content:*
+## I. Session 5 Overview
+
+**Download the [slides](https://github.com/raphaelleroffo/intro-to-gis/raw/main/Session5/Intro%20to%20GIS%20-%20session%205.pdf)**
 
 - *Use cases; why may you need to buffer, clip, intersect?*
-- *Crossing multiple layers: common geoprocessing tools*
-- *Walk-through common mistakes and data errors*
-- *Coursework guidelines*
+- *"Crossing" multiple layers: common geoprocessing tools*
+- *...*
 
-*Tutorial:*
-- *Learn about the main geoprocessing tools, and where to find more advanced functionalities*
+&nbsp; 
+
+## II. Tutorial
+
+### Goals:
+
+- Building a choropleth
+- Defining relevant class breaks
+- Running simple geoprocessing tools
+- Adding map layout elements (legend, title, etc.) using the Print Layout Composer
+- Exporting a map as an image, PDF or SVG vector
+
+&nbsp; 
+
+### Context:
+
+This is part 2 of a tutorial in which we're exploring the theme of cycling to school (find part 1 [here](https://raphaelleroffo.github.io/intro-to-gis/intro-tutorial4.html)). 
+
+In the context of the Covid pandemic, the question of safely getting kids to attend school has become a key element in many countries' economic recovery strategies. Taking into considerations the pressing challenges of reducing carbon emissions, walking and cycling to school represent sustainable and safe ways for children and their parents to get to school, as long as proper cycling infrastructure exists.
+
+We are focusing on the accessibility to public transport score available in the census data. We're crossing information from the census with locations of primary schools in Greater London, and existing and planned major cycling routes. This is within the context of the GLA (Greater London Authority) plan for reducing carbon emissions, in particular with an expansion on the [Ultra Low Emission Zone](https://data.london.gov.uk/dataset/ultra_low_emissions_zone_expansion_new) since 25 October 2021. 
 
 
+&nbsp; 
 
-####### WORK IN PROGRESS ############
+### Data:
+
+We will pick up from where you left at the end of [Session 4](https://raphaelleroffo.github.io/intro-to-gis/intro-tutorial4.html); you can directly work from the project file `London` inside the [Session 4 geopackage](https://github.com/raphaelleroffo/intro-to-gis/raw/main/Session4/Session4-London.gpkg). Make sure the CRS is set to `EPSG:27700` and try to use a basemap of your choice from the `XYZ Tiles` section of your `Browser` panel (go back to the Session 3 tutorial for more information on how to load basemaps). I'm using `CartoDb Positron`.
+
+You can also download the geopackage for this session [here](https://github.com/raphaelleroffo/intro-to-gis/raw/main/Session5/Session5-London.gpkg) to have a completed version of this tutorial. 
+
+&nbsp; 
 
 
-### Building a Choropleth
+## III. Building a choropleth 
 
-**4.1**
+### **3.1 Refactoring fields**
 
-**4.2**
+### **3.2 Looking at data distribution**
 
-**4.3**
+### **3.3 Defining class breaks and symbology**
 
 
 https://docs.qgis.org/3.16/en/docs/training_manual/vector_analysis/basic_analysis.html
 
 
 
+<img src="../docs/assets/images/S5-.png" width="700">
+<img src="../docs/assets/images/S5-.png" width="700">
+<img src="../docs/assets/images/S5-.png" width="700">
+<img src="../docs/assets/images/S5-.png" width="700">
+<img src="../docs/assets/images/S5-.png" width="700">
+
+&nbsp; 
+
+## IV. Geoprocessing
+
+### **4.1 The processing toolbox**
+
+### **4.2 Clipping**
+
+### **4.3 Buffering**
 
 
-### 5. Exporting a map: setting up a layout and adding map elements (north arrow, scale bar, legend, title etc.) 
+## V. Exporting a map: setting up a layout and adding map elements (north arrow, scale bar, legend, title etc.) 
 
 
-**5.1 Introducing the Print Layout Composer**
+### **5.1 Introducing the Print Layout Composer**
 
 We've established that GIS files ( `*.gqz` or geopackages) are a "recipe" to represent datasets as layers, and to display them in a specific way. Such files are _not_ images; if you want to export an image of your map (as `*.png`, `*.jpeg`, `*.pdf` or even to a printer directly), you must use the QGIS `Print Layout Composer`, which you can access from your menu `Project` > `New Print Layout...`. Give it a name such as `Session4-layout` and press Enter. 
 
@@ -64,10 +106,35 @@ Once you release, your map appears on the page. You can move the box and edit it
 <img src="../img/S4-67.png" width="700">
 
 
-**5.2 Adding a legend**
+### **5.2 Adding a legend**
 
 
-**5.3**
+### **5.3 Adding other map layout elements**
 
-**5.4**
 
+### **5.4 Exporting your map**
+
+PNG
+
+PDF
+
+SVG
+
+
+&nbsp; 
+
+
+
+
+&nbsp; 
+
+
+**Well done! This is it for this tutorial - in the final tutorial of this intro course, you will explore the link between socio-economic status and exposure to flooding in London.**
+
+&nbsp; 
+
+&nbsp; 
+
+&nbsp; 
+
+### **[Next Tutorial >](https://raphaelleroffo.github.io/intro-to-gis/intro-tutorial6.html)**
