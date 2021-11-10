@@ -54,9 +54,9 @@ Please also download the geopackage for this session [here](https://github.com/r
 ## III. Building a choropleth 
 
 
-We will now focus on the London boroughs. More specifically, one field in the London Borough census data is of interest to us: **The Average Public Transport accessibility Score**. We'd like to create a choropleth in which each borough takes a colour that symbolizes the "intensity" of that score. For instance, we could pick a white to green colour ramp. Greener boroughs score better on the accessibility to public transport.
+We will now focus on the London boroughs. More specifically, one field in the London Borough census data is of interest to us: **The Average Public Transport accessibility Score**. We'd like to create a choropleth in which each borough takes a colour that symbolizes the "intensity" of that score. For instance, we could pick a white to dark blue colour ramp. The darker the blue, the better the boroughs scored in terms of accessibility to public transport.
 
-### **3.1 Refactoring fields**
+### **3.1 Changing a field's data type**
 
 
 We want to apply a `Graduated symbology`. However, our accessibility score field does not appear when we try to select a value. Can you guess why?
@@ -84,21 +84,88 @@ In the middle section, unroll the `Fields and Values` category and double click 
 &nbsp; 
 
 
-Next, let's find the function that will help us convert the data type. Unroll the `Conversions` category, and find the `to_real` function whose name is pretty self-explanatory. Make sure you close the brackets after your field name so that the expression is valid. Press `OK`.
+Next, let's find the function that will help us convert the data type. Unroll the `Conversions` category, and find the `to_real` function whose name is pretty self-explanatory. Make sure you close the brackets after your field name so that the expression is valid. Press `OK`. 
 
-<img src="../img/S5-04.png" width="700">
+<img src="../img/S5-05.png" width="700">
+
+&nbsp; 
+
+Your new field is now available as the last field in your `Fields` tab and  in your attribute table. Notice that now the yellow pen is activated (you can see it in your layer list and at the top of your `Fields` tab). This means that you have entered the Edition mode; you are **actually altering the dataset** you're working with. This is a big difference from everything we've done so far! Now press the yellow pen and  click `Save`. The additional column you have created is now part of the source dataset - the dataset file on your computer has been permanently modified. This is why we chose to Create a new column rather than directly modifying the initial column - we wanted to make sure that we have a backup of the original column in case we made a mistake.
+
+<img src="../img/S5-06.png" width="700">
 
 &nbsp; 
 
 
+### **3.2 The Refactoring tool**
 
-### **3.2 Looking at data distribution**
+Note that instead of using the calculator to create a new field, you could have used the `Refactor fields` tool in the Processing toolbox. This tool allows you to create a copy of your layer, but where you have edited data types, fields names or even which fields you want to be present in the new attribute table and in which order. 
 
-### **3.3 Defining class breaks and symbology**
+<img src="../img/S5-10.png" width="700">
+
+&nbsp; 
+
+Give it a try!
+
+&nbsp; 
+
+### **3.3 Defining class breaks**
 
 
-https://docs.qgis.org/3.16/en/docs/training_manual/vector_analysis/basic_analysis.html
+If you navigate back to your `Symbology` tab and select the `Graduated symbology` method, you will notice that your new field is available as a `Value`. Click `Classify` to bring up the values of that field. You can see that values range from 5.6 to 33.1
 
+<img src="../img/S5-07.png" width="700">
+
+&nbsp; 
+
+Now it's time to think about the way we're going to classify this data. Because we're working with data from an index, we will first have a look at the methodology documentation of this index. It turns out the Index is linked to an overall PTAL Public Transport Access Level Score, and we can find a conversion table on page 11 of [this document](https://www.itf-oecd.org/sites/default/files/docs/london-accessibility-indicators.pdf).
+
+<img src="../img/S5-09.png" width="700">
+
+This gives us the class breaks we should use to respect the proper classification, the way it was designed to be used (1, 2.5, 5, 10, 15, 20, 25, 40). In our case, because data range from 5.6 to 33.1, we get these 5 categories:
+
+
+| 5-10 | 10-15 | 15-20 | 20-25 | 25+ |
+
+&nbsp; 
+
+Note that if we did not have official "instructions" on how to define class breaks, we would go in the `Histogram` tab and press `Load values` to bring up a histogram of your variable's distribution. We would then examine where the mean and standard deviations are located, and look for identifiable clusters or natural breaks in this histogram
+
+<img src="../img/S5-11.png" width="700">
+
+&nbsp; 
+
+We would alternate the different methods and get back to the histogram to get a preview of which sections of the distribution get assigned which colour.
+
+<img src="../img/S5-08.png" width="700">
+
+&nbsp; 
+
+For now, let's manually edit our categories: just double click on the values and a pop-up will prompt you to enter the class bounds.
+
+<img src="../img/S5-12.png" width="700">
+
+&nbsp; 
+
+Now, you can also click on the legend items to manually edit the values. Here, beacuse the PTAL score is more widely used than the index, I will use the PTAL score.
+
+<img src="../img/S5-13.png" width="700">
+
+&nbsp;
+
+What we can do now is also rename our layer `Public Transport Access Level (PTAL)`. Navigate to the `Source` tab, change the name and click `Apply`. You can see that this has affected your layer in the `Layers` panel.
+
+<img src="../img/S5-14.png" width="700">
+
+&nbsp;
+
+### **3.3 Defining symbology**
+
+Now go back to your `Symbology` tab. We pick a simple colour ramp that ranges from white to dark blue. Interestingly, a very strong pattern seems to emerge whereby Southwest seems to be significantly better connected than the rest of Greater London:
+
+<img src="../img/S5-15.png" width="700">
+
+&nbsp; 
 
 
 <img src="../img/S5-.png" width="700">
@@ -121,9 +188,10 @@ https://docs.qgis.org/3.16/en/docs/training_manual/vector_analysis/basic_analysi
 
 &nbsp; 
 
-<img src="../img/S5-.png" width="700">
 
-&nbsp; 
+### **3.4 Try it out!**
+
+Now, pick a field of your choice in the London Boroughs layer. You can drag a new copy of this layer on your canvas from your side `Browser` panel, and untick the PTAL layer in your `Layers` panel to avoid confusion. In the `Fields` tab, find a field you are interested in, and try to build a choropleth like we just did (repeat and adapt all the steps from section III). If you want to try several fields, you may want to use the `Refactor fields` tool instead of the field calculator when you convert the data type to numeric.
 
 ## IV. Geoprocessing
 
