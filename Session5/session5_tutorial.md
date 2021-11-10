@@ -54,14 +54,43 @@ Please also download the geopackage for this session [here](https://github.com/r
 ## III. Building a choropleth 
 
 
-We will now focus on the London boroughs. More specifically, one field in the London Borough census data is of interest to us: **The Average Public Transport accessibility Score**:
+We will now focus on the London boroughs. More specifically, one field in the London Borough census data is of interest to us: **The Average Public Transport accessibility Score**. We'd like to create a choropleth in which each borough takes a colour that symbolizes the "intensity" of that score. For instance, we could pick a white to green colour ramp. Greener boroughs score better on the accessibility to public transport.
+
+### **3.1 Refactoring fields**
+
+
+We want to apply a `Graduated symbology`. However, our accessibility score field does not appear when we try to select a value. Can you guess why?
 
 <img src="../img/S5-02.png" width="700">
 
+&nbsp; 
+
+
+Let's inspect our values. You can see in the attribute table that the values in this field are numeric, decimal values. However, in your `Layer Properties` window, under the `Fields` tab, you can see a little `abc` symbol in the `Id` column. This means that your field is of a data type `string` (text). Strings cannot be used to create a graduated symbology, because each value is treated like an individual category and not like a number part of a continuous variable.
+
+<img src="../img/S5-03.png" width="700">
 
 &nbsp; 
 
-### **3.1 Refactoring fields**
+
+We need to transform the data type of this field. More precisely, we will create a new field that takes the same values as our score but save them as decimal numbers instead of strings.
+
+In your `Fields` tab, click on the little calculator. This opens a window that probably looks familiar to you by now! What you want to do is to create a new field. Give it a meaningful name, for instance **Transport_Accessibility**, and make sure you select `Decimal number (real)` as your Output field type. 
+
+In the middle section, unroll the `Fields and Values` category and double click  `Average_Public_Transport_Accessibility_score,_2014`. 
+
+<img src="../img/S5-04.png" width="700">
+
+&nbsp; 
+
+
+Next, let's find the function that will help us convert the data type. Unroll the `Conversions` category, and find the `to_real` function whose name is pretty self-explanatory. Make sure you close the brackets after your field name so that the expression is valid. Press `OK`.
+
+<img src="../img/S5-04.png" width="700">
+
+&nbsp; 
+
+
 
 ### **3.2 Looking at data distribution**
 
