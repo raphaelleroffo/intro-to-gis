@@ -33,7 +33,7 @@ What are the demographic characteristics of these areas (age, education, employm
 
 ### Data:
 
-Please download all the data in the [Session 6 geopackage](https://github.com/raphaelleroffo/intro-to-gis/raw/main/Session6/Session6-London.gpkg.zip). Make sure the CRS is set to `EPSG:27700`.
+Please download all the data in the [Session 6 geopackage](https://github.com/raphaelleroffo/intro-to-gis/raw/main/Session6/Session6-London.gpkg.zip) and unzip it.
 
 Data sources:
 
@@ -47,7 +47,8 @@ Data sources:
 
 In the geopackage, open the `Session6-Start` file. Because the LSOA layer is too heavy, I could not add it onto the geopackage. Go [**download it as a shapefile**](https://geoportal.statistics.gov.uk/datasets/lower-layer-super-output-areas-december-2011-boundaries-full-extent-bfe-ew-v3/explore) from the ONS Geoportal.
 
-Now, on your Layers list, you should have the LSOA boundaries, the census table for London at LSOA level, the flood risk zones and the Greater London boundaries. You can start a new QGIS project to save your progression using your top menu `Project` > `Save to...` > `Geopackage` and in your Session6 geopackage, saving for instance as `Session6-Progress`. This will allow you to go back to the start if you encounter too many problems, but also to pick up from where you left off if you're interrupted while doing this tutorial.
+Now, on your Layers list, you should have the LSOA boundaries, the census table for London at LSOA level, the flood risk zones and the Greater London boundaries.  Make sure the CRS is set to `EPSG:27700`. You can start a new QGIS project to save your progression using your top menu `Project` > `Save to...` > `Geopackage` and in your Session6 geopackage, saving for instance as `Session6-Progress`. This will allow you to go back to the start if you encounter too many problems, but also to pick up from where you left off if you're interrupted while doing this tutorial. Remember to save your changes often using the flapdisk icon.
+
 
 <img src="../img/S6-01.png" width="700">
 
