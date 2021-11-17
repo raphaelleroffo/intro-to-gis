@@ -46,7 +46,7 @@ We will pick up from where you left at the end of [Session 4](https://raphaeller
 
 <img src="../img/S5-01.png" width="700">
 
-**Please also download the geopackage for this session [here](https://github.com/raphaelleroffo/intro-to-gis/raw/main/Session5/Session5-London.gpkg) to access a completed version of this tutorial. **
+**Please also download the geopackage for this session [here](https://github.com/raphaelleroffo/intro-to-gis/raw/main/Session5/Session5.gpkg) to access a completed version of this tutorial. **
 
 &nbsp; 
 
